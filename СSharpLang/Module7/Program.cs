@@ -10,7 +10,7 @@ namespace Module7
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Введите номер задания (1):");
+            Console.WriteLine("Введите номер задания:");
             var input = Console.ReadLine();
 
             switch (input)
