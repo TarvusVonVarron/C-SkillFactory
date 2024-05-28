@@ -83,9 +83,9 @@ namespace Module7
             Area = area;
         }
     }
-    internal class Task5
+    internal static class Task5
     {
-        public void Run()
+        public static void Run()
         {
             Person person1 = new Person("John");
             Car car1 = new Car("Toyota");

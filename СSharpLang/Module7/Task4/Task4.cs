@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace Module7
 {
-    internal class Task4
+    internal static class Task4
     {
+        public static void Run()
+        {
 
+        }
     }
 }

@@ -24,6 +24,18 @@ namespace Module7
                 case "3":
                     Task3.Run();
                     break;
+                case "4":
+                    Task4.Run();
+                    break;
+                case "5":
+                    Task5.Run();
+                    break;
+                case "6":
+                    Task6.Run();
+                    break;
+                case "7":
+                    Task7.Run();
+                    break;
                 default:
                     Console.WriteLine("Неправильный ввод.");
                     break;
