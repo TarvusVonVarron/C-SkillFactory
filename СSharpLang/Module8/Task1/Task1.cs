@@ -20,10 +20,10 @@ namespace Module8
             long TotalSpace { get; }
             long FreeSpace { get; }
 
-            public Drive(string Name, int Space, double FreeSpace)
+            public Drive(string Name, long Space, long FreeSpace)
             {
                 this.Name = Name;
-                this.Space = Space;
+                this.TotalSpace = Space;
                 this.FreeSpace = FreeSpace;
             }
             Dictionary<string, Folder> Folders = new Dictionary<string, Folder>();
