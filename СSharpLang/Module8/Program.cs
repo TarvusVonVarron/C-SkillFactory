@@ -27,6 +27,9 @@ namespace Module8
                 case "4":
                     Task4.Run();
                     break;
+                case "5":
+                    Exam.Run();
+                    break;
                 default:
                     Console.WriteLine("Неправильный ввод.");
                     break;
