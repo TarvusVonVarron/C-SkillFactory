@@ -21,6 +21,12 @@ namespace Module9
                 case "2":
                     Task2.Run();
                     break;
+                case "3":
+                    Task3.Run();
+                    break;
+                case "4":
+                    Task4.Run();
+                    break;
                 default:
                     Console.WriteLine("Неправильный ввод.");
                     break;
