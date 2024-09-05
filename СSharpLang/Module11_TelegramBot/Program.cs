@@ -34,6 +34,8 @@ namespace Module11_TelegramBot
             AppSettings appSettings = BuildAppSettings();
             services.AddSingleton(BuildAppSettings());
 
+            services.AddSingleton<IFileHandler, AudioFileHandler>();
+
             // Подключаем контроллеры сообщений и кнопок
             services.AddTransient<DefaultMessageController>();
             services.AddTransient<VoiceMessageController>();
@@ -42,7 +44,7 @@ namespace Module11_TelegramBot
 
             services.AddSingleton<IStorage, MemoryStorage>();
             // Регистрируем объект TelegramBotClient c токеном подключения
-            services.AddSingleton<ITelegramBotClient>(provider => new TelegramBotClient(appSettings.BotToken);
+            services.AddSingleton<ITelegramBotClient>(provider => new TelegramBotClient(appSettings.BotToken));
             // Регистрируем постоянно активный сервис бота
             services.AddHostedService<Bot>();
         }
@@ -51,7 +53,12 @@ namespace Module11_TelegramBot
         {
             return new AppSettings()
             {
-                BotToken = "5353047760:AAECHVcGyM-cQJIfA4sCStnGDBPimhlIV-g"
+                DownloadsFolder = "C:\\Users\\HP\\Downloads",
+                BotToken = "6187844860:AAFtM52mqE7sAHgzTDwu0bCCN2aZskxrdaI",
+                AudioFileName = "audio",
+                InputAudioFormat = "ogg",
+                OutputAudioFormat = "wav",
+                InputAudioBitrate = 48000
             };
         }
     }
