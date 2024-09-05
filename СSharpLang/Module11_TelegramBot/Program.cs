@@ -3,7 +3,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Module11_TelegramBot.Controllers;
 using Telegram.Bot;
+using Module11_TelegramBot.Controllers;
+using Module11_TelegramBot.Services;
+using Module11_TelegramBot.Configuration;
 
 namespace Module11_TelegramBot
 {
@@ -27,10 +31,28 @@ namespace Module11_TelegramBot
 
         static void ConfigureServices(IServiceCollection services)
         {
+            AppSettings appSettings = BuildAppSettings();
+            services.AddSingleton(BuildAppSettings());
+
+            // Подключаем контроллеры сообщений и кнопок
+            services.AddTransient<DefaultMessageController>();
+            services.AddTransient<VoiceMessageController>();
+            services.AddTransient<TextMessageController>();
+            services.AddTransient<InlineKeyboardController>();
+
+            services.AddSingleton<IStorage, MemoryStorage>();
             // Регистрируем объект TelegramBotClient c токеном подключения
-            services.AddSingleton<ITelegramBotClient>(provider => new TelegramBotClient("6187844860:AAFtM52mqE7sAHgzTDwu0bCCN2aZskxrdaI"));
+            services.AddSingleton<ITelegramBotClient>(provider => new TelegramBotClient(appSettings.BotToken);
             // Регистрируем постоянно активный сервис бота
             services.AddHostedService<Bot>();
+        }
+
+        static AppSettings BuildAppSettings()
+        {
+            return new AppSettings()
+            {
+                BotToken = "5353047760:AAECHVcGyM-cQJIfA4sCStnGDBPimhlIV-g"
+            };
         }
     }
 }
