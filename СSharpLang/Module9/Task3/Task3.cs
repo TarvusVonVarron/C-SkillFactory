@@ -10,76 +10,80 @@ namespace Module9
 {
     internal class Task3
     {
-        static void Subtraction(int a, int b)
+        public static int Subtraction(int a, int b)
         {
-            Console.WriteLine(a - b);
+            return a - b;
+        }
+        public static int Sum(int a, int b)
+        {
+            return a + b;
         }
 
-        static void Sum(int a, int b)
+        public static void TestActions(string msg)
         {
-            Console.WriteLine(a + b);
-        }
-        private static int AddNumbers(int param1, int param2)
-        {
-            return param1 + param2;
+
+            Console.WriteLine(msg);
+
         }
 
-        static void Display(string message)
+        public static bool TestPredicate(int a)
         {
-            Console.WriteLine(message);
+            return a > 100;
         }
 
-        private static bool IsApple(string modelName)
-        {
-            if (modelName == "IPhone X") return true;
-            else return false;
-        }
+        public delegate int IntDelegate(int a, int b);
 
-        public delegate void SubDelegate(int a, int b);
         delegate void ShowMessageDelegate(string _message);
         delegate int RandomNumberDelegate();
 
         public static void Run()
         {
-            SubDelegate subDelegate = Subtraction;
-            subDelegate += Sum;
-            subDelegate.Invoke(5, 10);
+            IntDelegate intDelegate;
+            intDelegate = Subtraction;
+            Console.WriteLine(intDelegate(5, 2));
+            Console.WriteLine(intDelegate.Invoke(5, 2));
 
-            subDelegate -= Sum;
-            subDelegate.Invoke(5, 10);
+            intDelegate += Sum;
 
-            Func<int, int, int> Addition = AddNumbers;
-            int result = Addition(10, 20);
+            Console.WriteLine(intDelegate.Invoke(5, 2));
+
+            intDelegate -= Sum;
+            Console.WriteLine(intDelegate.Invoke(5, 2));
+
+            IntDelegate calcDelegateOne = Subtraction;
+            IntDelegate calcDelegateTwo = Sum;
+            IntDelegate calcDelegateThree = calcDelegateOne + calcDelegateTwo;
+            calcDelegateThree.Invoke(100, 55);
+
+            Func<int, int, int> sumDelegate = Sum;
+            int result = sumDelegate.Invoke(1, 30);
             Console.WriteLine(result);
 
-            Action<string> action = new Action<string>(Display);
-            action("Привет разработчик!");
-            Console.Read();
+            Action<string> action = TestActions;
+            action.Invoke("Test");
 
-            Predicate<string> CheckIfApple = IsApple;
-            bool result2 = CheckIfApple("IPhone X"); 
-            if (result2) Console.WriteLine("Это IPhone X");
+            Predicate<int> predicate = TestPredicate;
+            predicate.Invoke(111);
 
 
-            ShowMessageDelegate showMessageDelegate = delegate (string _message)
+
+            //anonimous methods
+            ShowMessageDelegate showMessage = delegate (string a)
             {
-                Console.WriteLine(_message);
+                Console.WriteLine(a);
             };
-            showMessageDelegate.Invoke("Hello World!");
-            Console.Read();
 
-            ShowMessageDelegate showMessageDelegate2 = (x) => Console.WriteLine(x);
+            showMessage.Invoke("Test");
 
-
-            RandomNumberDelegate randomNumberDelegate = delegate()
+            RandomNumberDelegate randomNumber = delegate
             {
                 return new Random().Next(0, 100);
             };
-            result = randomNumberDelegate.Invoke();
 
-            RandomNumberDelegate randomNumberDelegate2 = () => new Random().Next(0, 100);
+            var rand = randomNumber.Invoke();
+
+            showMessage = c => Console.WriteLine(c);
+            randomNumber = () => new Random().Next(0, 100);
         }
-
-
     }
 }
