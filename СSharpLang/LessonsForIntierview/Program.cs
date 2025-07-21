@@ -1,5 +1,6 @@
 ﻿using LessonsForIntierview;
 using LessonsForIntierview.AnimalsV2;
+using LessonsForIntierview.LINQ;
 using System;
 using System.Collections.Generic;
 
@@ -17,6 +18,10 @@ namespace LessonsForInterview
             Console.WriteLine("\nВторая версия\n");
             v2.StartLesson();
             Console.ReadKey();
+
+            UserHandler uh = new UserHandler();
+
+            uh.StartLesson();
         }
     }
 }

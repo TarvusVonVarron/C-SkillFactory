@@ -7,16 +7,9 @@ using System.Threading.Tasks;
 
 namespace LessonsForIntierview.AnimalsV2.Animals
 {
-    internal class Snake : IAnimal, IEater
+    class Snake : IAnimal, IEater
     {
-        public void Speak()
-        {
-            Console.WriteLine("Parseltongue whispering");
-        }
-
-        public void Eat()
-        {
-            Console.WriteLine("Let's eat some rats");
-        }
+        public void Speak() => Console.WriteLine("Hisssss");
+        public void Eat() => Console.WriteLine("Swallows a mouse whole");
     }
 }

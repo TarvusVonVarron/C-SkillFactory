@@ -53,6 +53,8 @@
     <Compile Include="AnimalsV2\Interfaces\IPet.cs" />
     <Compile Include="AnimalsV2\Interfaces\IEater.cs" />
     <Compile Include="AnimalsV2\Interfaces\IAnimal.cs" />
+    <Compile Include="LINQ\UserHandler.cs" />
+    <Compile Include="LINQ\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

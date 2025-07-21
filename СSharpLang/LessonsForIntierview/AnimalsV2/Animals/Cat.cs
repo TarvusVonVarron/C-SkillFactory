@@ -7,19 +7,10 @@ using System.Threading.Tasks;
 
 namespace LessonsForIntierview.AnimalsV2.Animals
 {
-    internal class Cat : IAnimal, IPet, IEater
+    class Cat : IAnimal, IEater, IPet
     {
-        public void Speak()
-        {
-            Console.WriteLine("Meow-meow");
-        }
-        public void Eat()
-        {
-            Console.WriteLine("Let's eat some fish");
-        }
-        public void PlayWithOwner()
-        {
-            Console.WriteLine("Play with laser");
-        }
+        public void Speak() => Console.WriteLine("Meow-meow");
+        public void Eat() => Console.WriteLine("Eats fish");
+        public void PlayWithOwner() => Console.WriteLine("Plays with laser");
     }
 }

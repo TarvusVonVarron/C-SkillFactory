@@ -7,11 +7,8 @@ using System.Threading.Tasks;
 
 namespace LessonsForIntierview.AnimalsV2.Animals
 {
-    internal class RobotDog : IPet
+    class RobotDog : IPet
     {
-        public void PlayWithOwner()
-        {
-            Console.WriteLine("Play with stones");
-        }
+        public void PlayWithOwner() => Console.WriteLine("Emits play-beep");
     }
 }
